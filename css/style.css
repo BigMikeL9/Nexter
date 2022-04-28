@@ -1,48 +1,22 @@
-// COLOR VARIABLES
-$color-primary: #c69963;
-$color-primary-dark: #b28451;
-
-$color-secondary: #101d2c;
-
-$color-grey-light-1: #f9f7f6;
-$color-grey-light-2: #aaa;
-
-$color-grey-dark-1: #54483a;
-$color-grey-dark-2: #6d5d4b;
-
-// FONT VARIABLES
-$font-primary: "Nunito", sans-serif;
-$font-display: "Josefin Sans", sans-serif;
-
+@charset "UTF-8";
 *,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 html {
   box-sizing: border-box;
-  font-size: 62.5%; // (10px / 16px) = 62.5% --> 1rem = 10px
-}
+  font-size: 62.5%; }
 
 body {
-  font-family: $font-primary;
-  color: $color-grey-dark-2;
-  font-weight: 300;
-}
+  font-family: "Nunito", sans-serif;
+  color: #6d5d4b;
+  font-weight: 300; }
 
-// ------- GRID LAYOUT -------
 .grid__container {
   display: grid;
-
-  & > * {
-    font-size: 3rem;
-    padding: 4rem;
-  }
-
-  // 🎭 Use 'vh', 'vw', 'min-content/auto' for Grid Column/Row sizes inorder to make the Grid Layout responsive from the very start and avoid Media Queries.
   /* 
     〰〰〰〰〰〰〰〰〰〰 ROW Tracks [HEIGHT] 〰〰〰〰〰〰〰〰〰〰
     〰 '80vh' --> FIRST Grid Item *Row Height* scales with viewport height
@@ -51,7 +25,6 @@ body {
     〰 'repeat(3, min-content) --> Next 3 *Row Heights* will adapt to the content inside it
   */
   grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
-
   /* 
     〰〰〰〰〰〰〰〰〰〰 COLUMN Tracks [WIDTH] 〰〰〰〰〰〰〰〰〰〰  
     〰 '8rem' -->  FIRST Grid Item *Column Width* of 8rem (80px)
@@ -63,19 +36,45 @@ body {
 
     〰 ' minmax(6rem, 1fr)' -->   A column that takes up the REMAINING WIDTH of the Viewport with a min width of '6rem' inorder to always have space at the left and right of the element(To center the 8 columns layout at the middle of the page)
   */
-
-  // 🎈 COLUMNS are always more IMPORTANT than ROWS which is why we named them 🎈
-
   /* 🌟🌟🌟🌟 IMPORTANT --> A very important technique to center the main content of the page (8 columns) is to add two columns, on at the far left and the other at the far right. And give them a *****'minmax({minimum white space as screen shrinks (ie: margin)}, 1fr)'*****. THESE TWO COLUMNS WILL NEVER GET SMALLER THAN 6rem (60px). When there is not enough space, the 8-column layout will start to shrink. ENSURES THAT THERE ALWAYS A MARGIN BETWEEN THE CONTENT AND THE END OF THE PAGE 🌟🌟🌟🌟 */
+  grid-template-columns: [sidebar-start] 8rem [sidebar-end full-content-start] minmax(6rem, 1fr) [centered-content-start] repeat(8, [column-start] minmax(min-content, 14rem) [column-end]) [centered-content-end] minmax(6rem, 1fr) [full-content-end]; }
+  .grid__container > * {
+    font-size: 3rem;
+    padding: 4rem; }
 
-  grid-template-columns:
-    [sidebar-start] 8rem [sidebar-end full-content-start]
-    minmax(6rem, 1fr)
-    [centered-content-start] repeat(
-      8,
-      [column-start] minmax(min-content, 14rem) [column-end]
-    )
-    [centered-content-end]
-    minmax(6rem, 1fr)
-    [full-content-end];
-}
+.sidebar {
+  background-color: #c69963;
+  grid-column: sidebar-start / sidebar-end;
+  grid-row: 1 / -1; }
+
+.header {
+  background-color: #54483a;
+  grid-column: full-content-start / column-end 6; }
+
+.realtors {
+  background-color: #101d2c;
+  grid-column: column-start 7 / full-content-end; }
+
+.features {
+  background-color: #aaa;
+  grid-column: centered-content-start / centered-content-end; }
+
+.story__images {
+  background-color: #c69963;
+  grid-column: full-content-start / column-end 4; }
+
+.story__content {
+  background-color: #f9f7f6;
+  grid-column: column-end 4 / full-content-end; }
+
+.homes {
+  background-color: #101d2c;
+  grid-column: centered-content-start / centered-content-end; }
+
+.gallery {
+  background-color: #54483a;
+  grid-column: full-content-start / full-content-end; }
+
+.footer {
+  background-color: #101d2c;
+  grid-column: full-content-start / full-content-end; }

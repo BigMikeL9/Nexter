@@ -1,5 +1,6 @@
 .footer {
-  background-color: $color-secondary;
-
+  // --- Page Layout
   grid-column: full-content-start / full-content-end;
+
+  background-color: $color-secondary;
 }

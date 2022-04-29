@@ -1,5 +1,6 @@
 .realtors {
-  background-color: $color-secondary;
-
+  // --- Page Layout
   grid-column: column-start 7 / full-content-end;
+
+  background-color: $color-secondary;
 }

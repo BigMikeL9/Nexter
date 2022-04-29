@@ -1,5 +1,6 @@
 .homes {
-  background-color: $color-secondary;
-
+  // --- Page Layout
   grid-column: centered-content-start / centered-content-end;
+
+  background-color: $color-secondary;
 }

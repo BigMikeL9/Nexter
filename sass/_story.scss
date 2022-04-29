@@ -1,13 +1,15 @@
 .story {
   &__images {
-    background-color: $color-primary;
-
+    // --- Page Layout
     grid-column: full-content-start / column-end 4;
+
+    background-color: $color-primary;
   }
 
   &__content {
-    background-color: $color-grey-light-1;
-
+    // --- Page Layout
     grid-column: column-end 4 / full-content-end;
+
+    background-color: $color-grey-light-1;
   }
 }

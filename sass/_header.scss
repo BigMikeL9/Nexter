@@ -1,5 +1,6 @@
 .header {
-  background-color: $color-grey-dark-1;
-
+  // --- Page Layout
   grid-column: full-content-start / column-end 6;
+
+  background-color: $color-grey-dark-1;
 }

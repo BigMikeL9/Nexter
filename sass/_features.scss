@@ -1,5 +1,35 @@
 .features {
-  background-color: $color-grey-light-2;
-
+  // --- Page Layout
   grid-column: centered-content-start / centered-content-end;
+
+  margin: 15rem 0;
+
+  display: grid;
+  // grid-template-columns: repeat(3, 1fr);
+  // 👇  ⭐ Creates as many tracks as can fit based on the MIN-WIDTH (25rem) that we define. (ie: if grid item width gets smaller than 25rem, then a new row will be created ⭐ 👇
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  grid-gap: 6rem;
+
+  align-items: start;
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-gap: 1.5rem 2.5rem;
+
+  &__icon {
+    width: 4.5rem;
+    height: 4.5rem;
+    fill: $color-primary;
+
+    grid-row: 1 / span 2; // 'grid-row: 1 / -1;' --> the '-1' only works with a EXPLICIT grid (ie: if we defined a number of rows)
+    align-self: flex-start;
+
+    transform: translateY(-1rem);
+  }
+
+  &__text {
+    font-size: 1.7rem;
+  }
 }

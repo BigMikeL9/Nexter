@@ -37,11 +37,6 @@ body {
 .grid__container {
   display: grid;
 
-  & > * {
-    font-size: 3rem;
-    padding: 4rem;
-  }
-
   // 🎭 Use 'vh', 'vw', 'min-content/auto' for Grid Column/Row sizes inorder to make the Grid Layout responsive from the very start and avoid Media Queries.
   /* 
     〰〰〰〰〰〰〰〰〰〰 ROW Tracks [HEIGHT] 〰〰〰〰〰〰〰〰〰〰
@@ -64,6 +59,8 @@ body {
     〰 ' minmax(6rem, 1fr)' -->   A column that takes up the REMAINING WIDTH of the Viewport with a min width of '6rem' inorder to always have space at the left and right of the element(To center the 8 columns layout at the middle of the page)
   */
 
+  // -----
+  // ⭐⭐⭐ IN REAL WORLD --> Many times we only define the 'grid-template-columns' of a grid layout and ignore 'grid-template-rows' because we want the rows to be defined by the size of the content inside it ⭐⭐⭐
   // 🎈 COLUMNS are always more IMPORTANT than ROWS which is why we named them 🎈
 
   /* 🌟🌟🌟🌟 IMPORTANT --> A very important technique to center the main content of the page (8 columns) is to add two columns, on at the far left and the other at the far right. And give them a *****'minmax({minimum white space as screen shrinks (ie: margin)}, 1fr)'*****. THESE TWO COLUMNS WILL NEVER GET SMALLER THAN 6rem (60px). When there is not enough space, the 8-column layout will start to shrink. ENSURES THAT THERE ALWAYS A MARGIN BETWEEN THE CONTENT AND THE END OF THE PAGE 🌟🌟🌟🌟 */

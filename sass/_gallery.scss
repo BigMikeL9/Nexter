@@ -1,5 +1,6 @@
 .gallery {
-  background-color: $color-grey-dark-1;
-
+  // --- Page Layout
   grid-column: full-content-start / full-content-end;
+
+  background-color: $color-grey-dark-1;
 }

@@ -1,6 +1,7 @@
 .sidebar {
-  background-color: $color-primary;
-
+  // --- Page Layout
   grid-column: sidebar-start / sidebar-end;
   grid-row: 1 / -1; // From Grid Row Line 1 until the end
+
+  background-color: $color-primary;
 }

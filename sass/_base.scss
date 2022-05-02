@@ -76,3 +76,8 @@ body {
     minmax(6rem, 1fr)
     [full-content-end];
 }
+
+::selection {
+  background-color: $color-secondary;
+  color: #fff;
+}

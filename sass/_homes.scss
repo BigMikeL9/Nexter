@@ -1,6 +1,103 @@
 .homes {
   // --- Page Layout
   grid-column: centered-content-start / centered-content-end;
+  // ------
 
-  background-color: $color-secondary;
+  display: grid;
+  // 👇  ⭐ Creates as many tracks as can fit based on the MIN-WIDTH (25rem) that we define. (ie: if grid item width gets smaller than 25rem, then a new row will be created ⭐ 👇
+  // --- Makes the columns completely responsive without having to write any media queries at all.
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 7rem;
+
+  margin: 15rem 0;
+}
+
+.home {
+  background-color: $color-grey-light-1;
+
+  display: grid;
+  // ⭐⭐⭐ COMMON PATTERN --> Most of the time we only define the COLUMNS and then let CSS figure out how many rows we need automatically. Most of time this is the BEST PRACTICE⭐⭐⭐
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3.5rem 0;
+
+  &__img {
+    width: 100%;
+
+    grid-column: 1 / -1;
+
+    // --- Inorder to make the 'home__like-icon' overlap the 'home__img', we need to specify the 'grid-row'. Could just set position of 'home__like-icon' to absolute tho 👇
+    grid-row: 1 / 2;
+
+    // ⭐⭐ z-index only works on positioned elements (position: absolute, position: relative, position: fixed, or position: sticky). z-index can also be used on grid and flex items, by default. ⭐⭐
+    z-index: 1;
+  }
+
+  &__like-icon {
+    height: 2.5rem;
+    width: 2.5rem;
+    fill: $color-primary;
+    margin: 1rem;
+
+    // position: absolute;
+    // right: 1rem;
+    // top: 1rem;
+
+    grid-column: 2 / -1;
+    grid-row: 1 / 2;
+    justify-self: flex-end;
+
+    z-index: 2;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      fill: $color-primary-dark;
+    }
+  }
+
+  &__name {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    justify-self: center;
+    align-self: flex-end;
+
+    width: 80%;
+    transform: translateY(50%);
+    z-index: 3;
+
+    font-family: $font-display;
+    font-size: 1.6rem;
+    font-weight: 400;
+    padding: 1.25rem;
+    text-align: center;
+    color: #fff;
+    background-color: $color-secondary;
+  }
+
+  &__location,
+  &__rooms {
+    margin-top: 2.5rem;
+  }
+
+  &__location,
+  &__rooms,
+  &__area,
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 0 1rem; // Can be used with flex containers and grid containers. 'gap: {row-gap} {column-gap}'
+
+    font-size: 1.5rem;
+    margin-left: 2rem;
+
+    svg {
+      height: 2rem;
+      width: 2rem;
+      fill: $color-primary;
+    }
+  }
+
+  &__btn {
+    grid-column: 1 / -1;
+  }
 }

@@ -1,7 +1,98 @@
 .header {
   // --- Page Layout
   grid-column: full-content-start / column-end 6;
+
+  @media only screen and (max-width: $bp-large) {
+    grid-column: full-content-start / full-content-end;
+  }
   // ------
 
   background-color: $color-grey-dark-1;
+  background-image: linear-gradient(
+      (rgba($color-secondary, 0.93)),
+      (rgba($color-secondary, 0.93))
+    ),
+    url("../img/hero.jpeg");
+
+  background-size: cover;
+  background-position: center;
+
+  padding: 2rem 8rem 8rem;
+
+  display: grid;
+
+  // ------ ⭐ Creating space between element in a grid container without margins/padding. Parent element HAVE TO HAVE A SPECIFIED HEIGHT ⭐ ------
+  // reminder: '1fr' fills up all the available space that is available. Works because the 'header' element is placed in a grid cell with a SPECIFIED HEIGHT ('80vh')
+  grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+
+  /* ⭐⭐ IMPORTANT -- ' grid-template-columns: minmax(min-content, max-content);' Makes the column width responsive to fit the content inside.  */
+  grid-template-columns: minmax(min-content, max-content);
+
+  justify-content: center; // ⭐⭐ IMPORTANT -- Center entire grid track inside of the 'header' container
+  gap: 1.5rem;
+
+  @media only screen and (max-width: $bp-small) {
+    padding: 4rem 4rem 8rem;
+  }
+
+  &__btn {
+    align-self: flex-start;
+    justify-self: flex-start;
+  }
+
+  &__logo {
+    justify-self: center;
+    height: 3rem;
+  }
+
+  &__seenon {
+    &-text {
+      // justify-self: center;
+
+      font-size: 1.6rem;
+      color: $color-grey-light-2;
+      // width: 100%;
+
+      // ⭐ Psuedo-elements can also be treated like Grid items. Like so 👇
+      display: grid;
+      grid-template-columns: 1fr max-content 1fr;
+      gap: 0 2rem;
+      align-items: center;
+
+      &::before,
+      &::after {
+        content: "";
+        display: block;
+        height: 1px;
+        background-color: currentColor;
+      }
+
+      &::before {
+        // grid-column: 1 / 2;
+      }
+
+      &::after {
+        // grid-column: 3 / -1;
+      }
+    }
+
+    &-logos {
+      justify-self: center;
+      width: 100%;
+
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      justify-items: center;
+      align-items: center;
+      gap: 0 3rem;
+
+      img {
+        // -- give images height instead of width so that when they are next to each other they wouldn't have different height and look weird
+        max-height: 2.5rem;
+        max-width: 100%;
+
+        filter: brightness(70%);
+      }
+    }
+  }
 }

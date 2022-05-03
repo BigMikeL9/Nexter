@@ -1,7 +1,66 @@
 .realtors {
   // --- Page Layout
   grid-column: column-start 7 / full-content-end;
+
+  @media only screen and (max-width: $bp-large) {
+    grid-column: full-content-start / full-content-end;
+  }
   // ------
 
   background-color: $color-secondary;
+  padding: 3rem;
+
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  gap: 2rem 0;
+
+  &__heading {
+  }
+
+  &__list {
+    display: grid;
+    // grid-template-columns: repeat(2, max-content);
+    grid-template-columns: min-content max-content;
+
+    align-items: center;
+    gap: 5vh 1rem; // --- used 'vh' for row-gap inorder for the gap to scale with height of viewport. Used 'vh' instead of 'vw' because it will look ridiculous on large screens with wide screens.
+
+    @media only screen and (max-width: $bp-large) {
+      // grid-template-columns: repeat(6, max-content);
+
+      // We can put more than one track in the 'repeat()' function and they will be multiplied. So this 👇👇 will be 6 columns. One with 'min-content' width, One with 'max-content' with, One with 'min-content' width, One with 'max-content' with ...... and so on
+      grid-template-columns: repeat(3, min-content max-content);
+      gap: 0;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      grid-template-columns: min-content max-content;
+      gap: 3vh 0;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 7rem;
+    border-radius: 10rem;
+  }
+
+  &__details {
+    @media only screen and (max-width: $bp-large) {
+      margin: 0 3rem 0 1.5rem;
+    }
+  }
+
+  &__sold {
+    color: $color-grey-light-2;
+    text-transform: uppercase;
+    margin-top: -3px;
+  }
 }
